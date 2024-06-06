@@ -14,8 +14,9 @@ if st.sidebar.button('撮影開始'):
 
     for i in range(10):
         st.write(f"画像 {i+1} を撮影中...")
+
         # カメラ入力
-        img_data = st.camera_input(f"Take a picture {i+1}", key=f"camera_{i}")
+        img_data = st.camera_input(f"Take a picture {i+1}")
 
         # 画像がキャプチャされた場合
         if img_data:
@@ -24,8 +25,12 @@ if st.sidebar.button('撮影開始'):
             images.append(img)
             st.image(img, caption=f"Captured image {i+1}")
 
-        # 1秒待つ
-        time.sleep(1)
+            # 1秒待つ
+            time.sleep(1)
+        else:
+            # 画像がキャプチャされない場合の処理
+            st.warning("カメラが動作していません。再度試してください。")
+            break
 
     st.write("画像のキャプチャが完了しました。")
 
