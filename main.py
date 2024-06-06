@@ -11,12 +11,18 @@ if 'images' not in st.session_state:
 # カメラ入力
 img_data = st.camera_input("Take a picture")
 
+# デバッグ用にカメラインプットのデータを表示
+st.write("Camera input data:", img_data)
+
 # 画像がキャプチャされた場合
 if img_data:
+    st.write("画像がキャプチャされました。")
     # 画像を読み込み
     img = Image.open(img_data)
     st.session_state.images.append(img)
     st.image(img, caption=f"Captured image {len(st.session_state.images)}")
+else:
+    st.write("画像がキャプチャされませんでした。カメラが正しく動作しているか確認してください。")
 
 # 取得した画像を表示
 if st.session_state.images:
