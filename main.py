@@ -13,8 +13,9 @@ if st.sidebar.button('撮影開始'):
     st.write("画像をキャプチャ中...")
 
     for i in range(10):
+        st.write(f"画像 {i+1} を撮影中...")
         # カメラ入力
-        img_data = st.camera_input(f"Take a picture {i+1}")
+        img_data = st.camera_input(f"Take a picture {i+1}", key=f"camera_{i}")
 
         # 画像がキャプチャされた場合
         if img_data:
@@ -33,11 +34,3 @@ if images:
     st.write("取得した画像:")
     for idx, img in enumerate(images):
         st.image(img, caption=f"Captured image {idx+1}")
-
-# import streamlit as st
-
-# # カメラの画像をキャプチャ
-# picture = st.camera_input("Take a picture")
-
-# if picture:
-#     st.image(picture)
